@@ -1,0 +1,127 @@
+{
+  "schema": "kitforge.build_recipe.v1",
+  "slug": "bookstack",
+  "image": "readystack/bookstack:v26.09.3-CE-ubuntu24.04-r3",
+  "build_method": "source-rebuild-php",
+  "source": {
+    "repo": "https://github.com/BookStackApp/BookStack",
+    "ref": "v26.09.3",
+    "php_version": "8.3",
+    "_php_version_note": "composer.json requires php ^8.2.0 (config.platform.php 8.2.0) and no locked composer package needs more; upstream's dev Dockerfile uses php:8.3-apache. Since 2026-10-10 the image runs Ubuntu 24.04's own PHP 8.3 (it reports 8.3.6; Ubuntu backports security fixes into it) instead of the official php:8.4-apache-bookworm image, whose Debian 12 base our cerodeo-v1 scan grades F on vulnerabilities Debian does not fix. PHP 8.4 on Ubuntu 24.04 would need a third-party archive (a PPA): a supply-chain decision, not taken here; preflight check_php BLOCKs a retarget whose source needs more than the image's PHP.",
+    "composer_install_cmd": "composer install --no-dev --optimize-autoloader --no-interaction --no-progress --prefer-dist",
+    "_composer_note": "Run WITH scripts: post-autoload-dump fires `php artisan package:discover` (writes bootstrap/cache/packages.php \u2014 needed by Laravel, no DB required) and post-install-cmd runs cache:clear/view:clear (file driver, no DB). If the builder lacks APP_KEY and an artisan script errors, add --no-scripts and run `php artisan package:discover --no-interaction` explicitly. vendor/ is pure-PHP (no native build) so it ports cleanly to the offline stage.",
+    "build_packages": [
+      "git",
+      "unzip",
+      "ca-certificates"
+    ],
+    "php_extensions": [
+      "gd",
+      "ldap",
+      "zip",
+      "pdo_mysql",
+      "opcache",
+      "curl",
+      "dom",
+      "fileinfo",
+      "mbstring",
+      "xml"
+    ],
+    "_ext_note": "From Ubuntu's packages (runtime_packages): php8.3-gd (Ubuntu's libgd3: freetype, jpeg, png, webp), php8.3-zip, php8.3-mysql (pdo_mysql, mysqli, mysqlnd), php8.3-ldap, php8.3-curl, php8.3-mbstring, php8.3-xml (dom, simplexml, xml, xmlreader, xmlwriter, xsl); opcache, readline and sodium come with php8.3-cli, ctype/fileinfo/iconv/tokenizer/pdo with php8.3-common. source.php_extensions is what the build asserts is loaded in both the Apache and the CLI configuration: the extensions compiled until 2026-10-10 (gd ldap zip pdo_mysql opcache) + composer.lock's platform requirements (curl dom fileinfo gd mbstring xml zip). Nothing is compiled: no docker-php-ext-*, no ldap --with-libdir.",
+    "frontend": {
+      "node_image": "node:22-bookworm",
+      "node_version": "22",
+      "package_manager": "npm",
+      "install_cmd": "npm ci --no-audit --no-fund",
+      "build_cmds": [
+        "npm run production"
+      ],
+      "output_dir": "public/dist",
+      "_note": "A separate node:22-bookworm vendor sub-stage (or `nodejs` added to the builder) runs `npm ci && npm run production` which builds public/dist (sass css + esbuild js) IN-TREE. Only the built public/dist is needed at runtime; node + node_modules are NOT copied into the runtime image."
+    },
+    "prune_paths": [
+      "dev",
+      "tests",
+      "themes",
+      "node_modules",
+      ".git",
+      ".github",
+      ".forgejo"
+    ],
+    "app_copies": [
+      {
+        "src": "app",
+        "dst": "/app/app"
+      },
+      {
+        "src": "bootstrap",
+        "dst": "/app/bootstrap"
+      },
+      {
+        "src": "database",
+        "dst": "/app/database"
+      },
+      {
+        "src": "lang",
+        "dst": "/app/lang"
+      },
+      {
+        "src": "public",
+        "dst": "/app/public"
+      },
+      {
+        "src": "resources",
+        "dst": "/app/resources"
+      },
+      {
+        "src": "routes",
+        "dst": "/app/routes"
+      },
+      {
+        "src": "storage",
+        "dst": "/app/storage"
+      },
+      {
+        "src": "vendor",
+        "dst": "/app/vendor"
+      },
+      {
+        "src": "artisan",
+        "dst": "/app/artisan"
+      },
+      {
+        "src": "composer.json",
+        "dst": "/app/composer.json"
+      },
+      {
+        "src": "composer.lock",
+        "dst": "/app/composer.lock"
+      },
+      {
+        "src": "version",
+        "dst": "/app/version"
+      }
+    ],
+    "source_date_epoch": 1795543172,
+    "source_date_epoch_provenance": "the time release v26.09.3-CE-ubuntu24.04-r3 was cut (2026-11-24T17:59:32Z), by scripts/rerelease-agenda.py: ReadyStack dates an image by when its release was packaged (owner 2026-11-10), recorded here once and used by every rebuild of the release; it builds upstream commit bf680915b6db, dated 2026-11-11T11:36:49Z (source.commit_epoch).",
+    "commit": "bf680915b6dbaf93eee5234ec72dc33bc5abafbf",
+    "source_date_epoch_basis": "release-cut",
+    "commit_epoch": 1794397009
+  },
+  "binaries_from_source": null,
+  "runtime_packages": [
+    "apache2",
+    "libapache2-mod-php8.3",
+    "php8.3-cli",
+    "php8.3-curl",
+    "php8.3-mbstring",
+    "php8.3-xml",
+    "php8.3-gd",
+    "php8.3-zip",
+    "php8.3-mysql",
+    "php8.3-ldap",
+    "ca-certificates",
+    "curl",
+    "tzdata"
+  ]
+}

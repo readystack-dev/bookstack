@@ -1,0 +1,307 @@
+{
+ "schema": "readystack.recipe.v1",
+ "slug": "bookstack",
+ "tag": "v26.09.3-CE-ubuntu24.04-r3",
+ "tarball": "ReadyStack-bookstack-v26.09.3-CE-ubuntu24.04-r3.tar.gz",
+ "tarball_sha256": "4da938b6b390c52108cb8d9a70dd8f612782f687d7c8452edb3df4be0b9b1a64",
+ "kit_root": "v26.09.3-CE-ubuntu24.04-r3",
+ "generated_at": "2026-11-24T22:01:16Z",
+ "generator": "KitForge release/recipe_publish.py",
+ "dockerfile": "Dockerfile.offline.pinned",
+ "build_script": "BUILD_OFFLINE.sh",
+ "preview_lines": 24,
+ "pins": {
+  "upstream": {
+   "repo": "https://github.com/BookStackApp/BookStack",
+   "ref": "v26.09.3",
+   "commit": "bf680915b6dbaf93eee5234ec72dc33bc5abafbf",
+   "url": "https://github.com/BookStackApp/BookStack/tree/bf680915b6dbaf93eee5234ec72dc33bc5abafbf",
+   "from": "docs/provenance/BUILD_RECIPE.json"
+  },
+  "fetches": [
+   {
+    "kind": "git",
+    "url": "https://github.com/BookStackApp/BookStack",
+    "ref": "v26.09.3"
+   }
+  ],
+  "bases": [
+   {
+    "ref": "ubuntu:24.04@sha256:9c7f200c07e3d4a03e7249d2c16bf66a51120fb876aa2242cf31451412543289",
+    "image": "ubuntu:24.04",
+    "digest": "sha256:9c7f200c07e3d4a03e7249d2c16bf66a51120fb876aa2242cf31451412543289"
+   }
+  ],
+  "toolchain": {
+   "buildkit": "moby/buildkit:v0.31.2",
+   "buildkit_image_digest": "sha256:e0e67ea9c4bb07bdef683e29f70f3b623d1eb9c82274a9ec04e6bb0511449fb0"
+  },
+  "build_method": "source-rebuild-php",
+  "source_date_epoch": 1795543172,
+  "source_date_epoch_utc": "2026-11-24T17:59:32Z",
+  "target": {
+   "image_manifest_digest": "sha256:7dd74866fc6bb09cd0b102c1714c96ca923d3eef1d34f111fbed405c723da1b2",
+   "config_digest": "sha256:1e7018170d9527ab4c04d90c527079f7d866c541889340529151386f1325b27c",
+   "image": "readystack/bookstack:v26.09.3-CE-ubuntu24.04-r3"
+  },
+  "checksummed_files": 17558
+ },
+ "files": [
+  {
+   "path": "BASES.tsv",
+   "size": 121,
+   "sha256": "c506d719c30d576fe42dd46d1cf2a9a05f4f3f364b41e02e4ffad3a1fc19500e",
+   "lines": 1,
+   "public": "full"
+  },
+  {
+   "path": "BUILD_OFFLINE.sh",
+   "size": 8856,
+   "sha256": "6ab4f08a6ec775b32d854f03413b30ecfe555ddba78cf0de956235f5a2a39542",
+   "lines": 162,
+   "public": "preview",
+   "preview_lines": 24
+  },
+  {
+   "path": "CHECKSUMS.sha256",
+   "size": 2616118,
+   "sha256": "ad44f86d4009a55b17458605747d938cf79b5280ad1b51c33d8b4a5ea1f93eab",
+   "lines": 17558,
+   "public": "account",
+   "stored": "gzip"
+  },
+  {
+   "path": "DOCKERFILE_NAME.txt",
+   "size": 26,
+   "sha256": "9aadd1ede68e016a6f163c97befc5ff2fcdc8ebd4f84b108dba63cb195fa8c84",
+   "lines": 1,
+   "public": "full"
+  },
+  {
+   "path": "Dockerfile",
+   "size": 6061,
+   "sha256": "e2c1a1d5b05524d717c14d9c46dad5976cda0eac887907b900b33151711f209b",
+   "lines": 74,
+   "public": "account"
+  },
+  {
+   "path": "Dockerfile.offline",
+   "size": 6061,
+   "sha256": "e2c1a1d5b05524d717c14d9c46dad5976cda0eac887907b900b33151711f209b",
+   "lines": 74,
+   "public": "account"
+  },
+  {
+   "path": "Dockerfile.offline.pinned",
+   "size": 6061,
+   "sha256": "e2c1a1d5b05524d717c14d9c46dad5976cda0eac887907b900b33151711f209b",
+   "lines": 74,
+   "public": "preview",
+   "preview_lines": 24
+  },
+  {
+   "path": "Dockerfile.vendor",
+   "size": 1944,
+   "sha256": "0d8b6cd440432090db04079fc0ec3031bdecff1c3c12b54d09bed88dbe21a26b",
+   "lines": 22,
+   "public": "account"
+  },
+  {
+   "path": "FILE_MODES.tsv",
+   "size": 1758229,
+   "sha256": "0c8b3d8239dc888cc1c1724660bc8e631e5754ab3f97e760abd1c54956008375",
+   "lines": 21367,
+   "public": "account",
+   "stored": "gzip"
+  },
+  {
+   "path": "MANIFEST.txt",
+   "size": 1422204,
+   "sha256": "0e18f25c811d6f6ba160a3ccd8c8369c4339dbcc1a354f899afad10ed1ea2f96",
+   "lines": 17560,
+   "public": "account",
+   "stored": "gzip"
+  },
+  {
+   "path": "README.md",
+   "size": 3320,
+   "sha256": "8ee1a3be46f23fe15bf7ce0b460ff9ecef940a5722b1828a1e1330faae721f51",
+   "lines": 39,
+   "public": "account"
+  },
+  {
+   "path": "SOURCE_DATE_EPOCH.txt",
+   "size": 11,
+   "sha256": "407b1f1df945e68632e69458ac236693b86cd045a4cf83ec5d2948e235d2381e",
+   "lines": 1,
+   "public": "full"
+  },
+  {
+   "path": "TARGET_DIGEST.txt",
+   "size": 432,
+   "sha256": "9110cf3dd89a59a28e95f971df5e0b5312e6f16c6af509c89fceb61d351b5bd3",
+   "lines": 8,
+   "public": "full"
+  },
+  {
+   "path": "VERIFY_OFFLINE.sh",
+   "size": 10153,
+   "sha256": "3e8184ea230cfd8f41f977e26be6bf7bd03112c396c517837ce0c7de4f7399dd",
+   "lines": 165,
+   "public": "account"
+  },
+  {
+   "path": "apache2-foreground",
+   "size": 732,
+   "sha256": "003f1949772aed38f5bc2cc4dd3193b3277f979735fd94bb18b863169b3c260d",
+   "lines": 18,
+   "public": "account"
+  },
+  {
+   "path": "bookstack-vhost.conf",
+   "size": 273,
+   "sha256": "ff38ca0700fe3e8bb721845e0966355e19afbd1beaef666b52c312320d6bc784",
+   "lines": 10,
+   "public": "account"
+  },
+  {
+   "path": "docker-entrypoint.sh",
+   "size": 2087,
+   "sha256": "886de540700f30c65608ccad737215015f01b687d7fc72b98a71c7f860775de2",
+   "lines": 35,
+   "public": "account"
+  },
+  {
+   "path": "docs/PROVENANCE.md",
+   "size": 2654,
+   "sha256": "f75d7f6bf7ad645ca46779e44c12ca1a1a96af7c78be157a15d44bf096424004",
+   "lines": 36,
+   "public": "account"
+  },
+  {
+   "path": "docs/REBUILD.md",
+   "size": 6234,
+   "sha256": "22021c9d05dbd2750b0b8e7393ccb8957cd759b3101cdb935dc91866b781e56d",
+   "lines": 62,
+   "public": "account"
+  },
+  {
+   "path": "docs/VERIFY.md",
+   "size": 2050,
+   "sha256": "d0b3ac8185b783df994544fe0479ac88945a822e01d5bcf98c5c3001e6238c67",
+   "lines": 34,
+   "public": "account"
+  },
+  {
+   "path": "docs/provenance/BASE_IMAGE_DIGESTS.lock",
+   "size": 52,
+   "sha256": "6064fa81846b53d5d3861279faf3c51ad56b75286183caf2d1adcdd913b05d96",
+   "lines": 2,
+   "public": "full"
+  },
+  {
+   "path": "docs/provenance/BUILD_RECIPE.json",
+   "size": 5051,
+   "sha256": "e2fdb8be81e25250a9513ff0d8dddd8d4d2a03d29b48f2b56c3136322e4ad0da",
+   "lines": 127,
+   "public": "account"
+  },
+  {
+   "path": "docs/provenance/CUSTODY_INPUTS.json",
+   "size": 658,
+   "sha256": "5327e522624052ee440f2ebec96d81467ce20a560c04488c770c01b45368b746",
+   "lines": 17,
+   "public": "account"
+  },
+  {
+   "path": "docs/provenance/SOURCE_FILE_MANIFEST.json",
+   "size": 117201,
+   "sha256": "9e4ffdc2bbc5591e8b7d2617bfa78d1021843c0ccd3aae401e73f38bb66a709d",
+   "lines": 2628,
+   "public": "account"
+  },
+  {
+   "path": "docs/provenance/SOURCE_TREE_HASH.json",
+   "size": 316,
+   "sha256": "c6df0fc8cf415573b1edad428dab19c87c1fd376cedb16a8bc1bf10563e59844",
+   "lines": 9,
+   "public": "full"
+  },
+  {
+   "path": "docs/provenance/SYSTEM_PINNING.lock",
+   "size": 154,
+   "sha256": "f9bd00f803b253e61d675370397265d2cbf198c7959c9d896bd2bdc35fad50bd",
+   "lines": 13,
+   "public": "account"
+  },
+  {
+   "path": "docs/provenance/TOOLCHAIN.lock",
+   "size": 5431,
+   "sha256": "9c00c56f3199231dd3806eb459b697accadeba8bca495953fc07ff3e771c569b",
+   "lines": 200,
+   "public": "account"
+  },
+  {
+   "path": "readystack-default-admin.php",
+   "size": 555,
+   "sha256": "969107c07c720a3df09acd7852ff5ee6a590a442533408551a225585bbfbaa19",
+   "lines": 8,
+   "public": "account"
+  },
+  {
+   "path": "readystack-mod-php.conf",
+   "size": 390,
+   "sha256": "f8eb513ee5aeec1252dd78f55dab6585ba27cad8b958b89190de7593103d2bba",
+   "lines": 9,
+   "public": "account"
+  },
+  {
+   "path": "readystack-php.conf",
+   "size": 396,
+   "sha256": "d15053c81ce9cba0fdd7c17d7b7456c844629b12ab521b072033baee92655a93",
+   "lines": 13,
+   "public": "account"
+  },
+  {
+   "path": "readystack-php.ini",
+   "size": 281,
+   "sha256": "a6b6e823b84e85b51b368f40de925bea7fcc1c63991e09fcff27fe5705c136ca",
+   "lines": 3,
+   "public": "account"
+  },
+  {
+   "path": "rebuild.json",
+   "size": 1217,
+   "sha256": "d335f56ba42981e5f983454bf7608b83d042f0b26fa247cd9027a078d67a4fc7",
+   "lines": 31,
+   "public": "account"
+  },
+  {
+   "path": "toolchain/BUILDKIT_TAG.txt",
+   "size": 22,
+   "sha256": "fcd530eeb02b063d2f047adad6eef896422a8e8d558513e5f09b2a262be32573",
+   "lines": 1,
+   "public": "full"
+  }
+ ],
+ "skipped": [],
+ "kit_adds": {
+  "bases": {
+   "files": 5,
+   "bytes": 29796854
+  },
+  "docs": {
+   "files": 2684,
+   "bytes": 23825545
+  },
+  "toolchain": {
+   "files": 1,
+   "bytes": 111529472
+  },
+  "vendored": {
+   "files": 14837,
+   "bytes": 168396261
+  }
+ },
+ "redacted_files": 0
+}

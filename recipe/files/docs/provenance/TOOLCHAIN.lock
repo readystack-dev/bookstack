@@ -1,0 +1,200 @@
+{
+  "apt_refresh": [
+    {
+      "min_version": "8.3.6-0ubuntu0.24.04.13",
+      "package": "php8.3-zip",
+      "reason": "CVE-2026-109618, CVE-2026-109619: php8.3-zip 8.3.6-0ubuntu0.24.04.12 -> 8.3.6-0ubuntu0.24.04.13"
+    },
+    {
+      "min_version": "2.8.4ubuntu0.1",
+      "package": "apt",
+      "reason": "CVE-2026-109518: apt 2.8.3 -> 2.8.4ubuntu0.1"
+    },
+    {
+      "min_version": "2.8.4ubuntu0.1",
+      "package": "libapt-pkg6.0t64",
+      "reason": "CVE-2026-109518: libapt-pkg6.0t64 2.8.3 -> 2.8.4ubuntu0.1"
+    },
+    {
+      "min_version": "10.42-4ubuntu2.2",
+      "package": "libpcre2-8-0",
+      "reason": "CVE-2026-103111, CVE-2026-86145, CVE-2026-89156, CVE-2026-89157 \u2026: libpcre2-8-0 10.42-4ubuntu2.1 -> 10.42-4ubuntu2.2"
+    },
+    {
+      "min_version": "2.4.58-1ubuntu8.18",
+      "package": "apache2",
+      "reason": "USN-9016-1: apache2 2.4.58-1ubuntu8.17 -> 2.4.58-1ubuntu8.18"
+    },
+    {
+      "min_version": "2.4.58-1ubuntu8.18",
+      "package": "apache2-bin",
+      "reason": "USN-9016-1: apache2-bin 2.4.58-1ubuntu8.17 -> 2.4.58-1ubuntu8.18"
+    },
+    {
+      "min_version": "2.4.58-1ubuntu8.18",
+      "package": "apache2-data",
+      "reason": "USN-9016-1: apache2-data 2.4.58-1ubuntu8.17 -> 2.4.58-1ubuntu8.18"
+    },
+    {
+      "min_version": "2.4.58-1ubuntu8.18",
+      "package": "apache2-utils",
+      "reason": "USN-9016-1: apache2-utils 2.4.58-1ubuntu8.17 -> 2.4.58-1ubuntu8.18"
+    },
+    {
+      "min_version": "5.38.2-3.2ubuntu0.7",
+      "package": "libperl5.38t64",
+      "reason": "USN-9006-1: libperl5.38t64 5.38.2-3.2ubuntu0.6 -> 5.38.2-3.2ubuntu0.7"
+    },
+    {
+      "min_version": "5.38.2-3.2ubuntu0.7",
+      "package": "perl",
+      "reason": "USN-9006-1: perl 5.38.2-3.2ubuntu0.6 -> 5.38.2-3.2ubuntu0.7"
+    },
+    {
+      "min_version": "5.38.2-3.2ubuntu0.7",
+      "package": "perl-base",
+      "reason": "USN-9006-1: perl-base 5.38.2-3.2ubuntu0.6 -> 5.38.2-3.2ubuntu0.7"
+    },
+    {
+      "min_version": "5.38.2-3.2ubuntu0.7",
+      "package": "perl-modules-5.38",
+      "reason": "USN-9006-1: perl-modules-5.38 5.38.2-3.2ubuntu0.6 -> 5.38.2-3.2ubuntu0.7"
+    },
+    {
+      "min_version": "0.10.6-2ubuntu0.6",
+      "package": "libssh-4",
+      "reason": "USN-9187-1: libssh-4 0.10.6-2ubuntu0.5 -> 0.10.6-2ubuntu0.6"
+    }
+  ],
+  "build_method": "source-rebuild-php",
+  "chain_id": 1221,
+  "dep_bumps": [],
+  "expected_residuals": [],
+  "images": [
+    {
+      "digest": "sha256:9c7f200c07e3d4a03e7249d2c16bf66a51120fb876aa2242cf31451412543289",
+      "ref": "ubuntu:24.04",
+      "role": "base"
+    }
+  ],
+  "mod_replaces": [],
+  "runtime_packages": [
+    "apache2",
+    "libapache2-mod-php8.3",
+    "php8.3-cli",
+    "php8.3-curl",
+    "php8.3-mbstring",
+    "php8.3-xml",
+    "php8.3-gd",
+    "php8.3-zip",
+    "php8.3-mysql",
+    "php8.3-ldap",
+    "ca-certificates",
+    "curl",
+    "tzdata"
+  ],
+  "schema": "kitforge.toolchain_lock.v1",
+  "slug": "bookstack",
+  "source": {
+    "app_copies": [
+      {
+        "dst": "/app/app",
+        "src": "app"
+      },
+      {
+        "dst": "/app/bootstrap",
+        "src": "bootstrap"
+      },
+      {
+        "dst": "/app/database",
+        "src": "database"
+      },
+      {
+        "dst": "/app/lang",
+        "src": "lang"
+      },
+      {
+        "dst": "/app/public",
+        "src": "public"
+      },
+      {
+        "dst": "/app/resources",
+        "src": "resources"
+      },
+      {
+        "dst": "/app/routes",
+        "src": "routes"
+      },
+      {
+        "dst": "/app/storage",
+        "src": "storage"
+      },
+      {
+        "dst": "/app/vendor",
+        "src": "vendor"
+      },
+      {
+        "dst": "/app/artisan",
+        "src": "artisan"
+      },
+      {
+        "dst": "/app/composer.json",
+        "src": "composer.json"
+      },
+      {
+        "dst": "/app/composer.lock",
+        "src": "composer.lock"
+      },
+      {
+        "dst": "/app/version",
+        "src": "version"
+      }
+    ],
+    "build_packages": [
+      "git",
+      "unzip",
+      "ca-certificates"
+    ],
+    "commit": "bf680915b6dbaf93eee5234ec72dc33bc5abafbf",
+    "commit_epoch": 1794397009,
+    "composer_install_cmd": "composer install --no-dev --optimize-autoloader --no-interaction --no-progress --prefer-dist",
+    "frontend": {
+      "build_cmds": [
+        "npm run production"
+      ],
+      "install_cmd": "npm ci --no-audit --no-fund",
+      "node_image": "node:22-bookworm",
+      "node_version": "22",
+      "output_dir": "public/dist",
+      "package_manager": "npm"
+    },
+    "php_extensions": [
+      "gd",
+      "ldap",
+      "zip",
+      "pdo_mysql",
+      "opcache",
+      "curl",
+      "dom",
+      "fileinfo",
+      "mbstring",
+      "xml"
+    ],
+    "php_version": "8.3",
+    "prune_paths": [
+      "dev",
+      "tests",
+      "themes",
+      "node_modules",
+      ".git",
+      ".github",
+      ".forgejo"
+    ],
+    "ref": "v26.09.3",
+    "repo": "https://github.com/BookStackApp/BookStack",
+    "source_date_epoch": 1795543172,
+    "source_date_epoch_basis": "release-cut",
+    "source_date_epoch_provenance": "the time release v26.09.3-CE-ubuntu24.04-r3 was cut (2026-11-24T17:59:32Z), by scripts/rerelease-agenda.py: ReadyStack dates an image by when its release was packaged (owner 2026-11-10), recorded here once and used by every rebuild of the release; it builds upstream commit bf680915b6db, dated 2026-11-11T11:36:49Z (source.commit_epoch)."
+  },
+  "version": "v26.09.3"
+}

@@ -1,0 +1,8 @@
+image_manifest_digest=sha256:7dd74866fc6bb09cd0b102c1714c96ca923d3eef1d34f111fbed405c723da1b2
+config_digest=sha256:1e7018170d9527ab4c04d90c527079f7d866c541889340529151386f1325b27c
+tag=readystack/bookstack:v26.09.3-CE-ubuntu24.04-r3
+probe_port=8080
+probe_path=/status
+probe_timeout=180
+verify_boot=skip
+verify_boot_reason=this image needs db (not part of this archive); boot it with your own services as the admin handbook describes
