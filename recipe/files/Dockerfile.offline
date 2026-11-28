@@ -33,7 +33,7 @@ RUN chmod 0755 /usr/local/bin/apache2-foreground && \
 RUN for sapi in apache2 cli; do \
       PHP_INI_SCAN_DIR=/etc/php/8.3/$sapi/conf.d php -c /etc/php/8.3/$sapi/php.ini -r '$m = array_map("strtolower", array_merge(get_loaded_extensions(), get_loaded_extensions(true))); $x = array_diff(array_slice($argv, 1), $m); if ($x) { fwrite(STDERR, "missing PHP extensions: " . implode(", ", $x) . "\n"); exit(1); }' "gd" "ldap" "zip" "pdo_mysql" "zend opcache" "curl" "dom" "fileinfo" "mbstring" "xml" || { echo "for the $sapi configuration"; exit 1; }; \
     done
-ARG SOURCE_DATE_EPOCH=1795543172
+ARG SOURCE_DATE_EPOCH=1795644290
 RUN (getent passwd bookstack >/dev/null 2>&1 || (groupadd -r bookstack && useradd -r -g bookstack -d /app bookstack)) && \
     mkdir -p /app/storage /app/storage/framework/cache /app/storage/framework/sessions /app/storage/framework/views /app/storage/logs /app/storage/uploads /app/storage/app /app/public/uploads /app/bootstrap/cache /var/run/apache2 /var/lock/apache2 /var/log/apache2 && \
     : "${SOURCE_DATE_EPOCH:?SOURCE_DATE_EPOCH must be set for a reproducible build}" && \
@@ -59,12 +59,17 @@ RUN chmod 0755 /usr/local/bin/docker-entrypoint.sh
 RUN sed -ri 's/^Listen 80$/Listen 8080/' /etc/apache2/ports.conf && a2enmod rewrite
 RUN chown -R bookstack:bookstack /app/storage /app/storage/framework/cache /app/storage/framework/sessions /app/storage/framework/views /app/storage/logs /app/storage/uploads /app/storage/app /app/public/uploads /app/bootstrap/cache /var/run/apache2 /var/lock/apache2 /var/log/apache2
 LABEL org.opencontainers.image.title="BookStack"
-LABEL org.opencontainers.image.source="https://github.com/BookStackApp/BookStack"
+LABEL org.opencontainers.image.source="https://github.com/readystack-dev/bookstack"
 LABEL org.opencontainers.image.licenses="MIT"
-LABEL org.opencontainers.image.version="v26.09.3-CE-ubuntu24.04-r3"
+LABEL org.opencontainers.image.version="v26.09.3-CE-ubuntu24.04-r4"
 LABEL org.opencontainers.image.description="BookStack — a self-hosted, MIT-licensed documentation / wiki platform (Laravel/PHP)."
-LABEL org.opencontainers.image.vendor="BookStackApp"
+LABEL org.opencontainers.image.vendor="ReadyStack.dev"
 LABEL org.opencontainers.image.revision="bf680915b6dbaf93eee5234ec72dc33bc5abafbf"
+LABEL readystack.upstream.source="https://github.com/BookStackApp/BookStack"
+LABEL org.opencontainers.image.url="https://readystack.dev/products/bookstack"
+LABEL org.opencontainers.image.documentation="https://github.com/readystack-dev/bookstack#readme"
+LABEL org.opencontainers.image.authors="ReadyStack <contact@readystack.dev>"
+LABEL readystack.upstream.vendor="BookStackApp"
 HEALTHCHECK --interval=5s --timeout=120s --start-period=60s \
   CMD curl -fsS -o /dev/null -w '%{http_code}' http://127.0.0.1:8080/status || exit 1
 USER bookstack

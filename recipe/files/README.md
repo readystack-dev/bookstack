@@ -1,14 +1,16 @@
-# Build kit for `readystack/bookstack:v26.09.3-CE-ubuntu24.04-r3`
+# Build kit for `readystack/bookstack:v26.09.3-CE-ubuntu24.04-r4`
 
-This archive rebuilds the linux/amd64 image `readystack/bookstack:v26.09.3-CE-ubuntu24.04-r3` from its own contents, with the network off, and checks the result against the image digest ReadyStack published, `sha256:7dd74866fc6bb09cd0b102c1714c96ca923d3eef1d34f111fbed405c723da1b2` (also in `TARGET_DIGEST.txt`). It holds everything the build needs, not the image itself.
+This archive rebuilds the linux/amd64 image `readystack/bookstack:v26.09.3-CE-ubuntu24.04-r4` from its own contents, with the network off, and checks the result against the image digest ReadyStack published, `sha256:fad137bc0dd91329b4682b83d5b75195544f7cfa43255b963a946b22360779a6` (also in `TARGET_DIGEST.txt`). It holds everything the build needs, not the image itself.
+
+Every release of this kit, its recipe and its defect issues are published at https://github.com/readystack-dev/bookstack; the product page is https://readystack.dev/products/bookstack.
 
 ## Rebuild it
 
 You need linux/amd64 Docker with `buildx` 0.30 or later, `jq` and `tar` (docs/REBUILD.md lists the rest, if any, and the hardware ReadyStack used).
 
 ```
-tar -xpzf ReadyStack-bookstack-v26.09.3-CE-ubuntu24.04-r3.tar.gz    # -p keeps each file's mode
-cd v26.09.3-CE-ubuntu24.04-r3
+tar -xpzf ReadyStack-bookstack-v26.09.3-CE-ubuntu24.04-r4.tar.gz    # -p keeps each file's mode
+cd v26.09.3-CE-ubuntu24.04-r4
 ./BUILD_OFFLINE.sh            # builds with the network off, from this archive alone
 ./VERIFY_OFFLINE.sh           # compares the rebuilt digest with the published one, then checks the image
 ```
@@ -23,8 +25,8 @@ ReadyStack signs this archive's `rebuild.json` with its release key once the fin
 
 ```
 curl -fsSLo ../cosign.pub https://readystack.dev/keys/cosign.pub
-curl -fsSLo ../ReadyStack-bookstack-v26.09.3-CE-ubuntu24.04-r3.rebuild.json.sigstore https://readystack.dev/api/kit/bookstack/v26.09.3-CE-ubuntu24.04-r3/files/ReadyStack-bookstack-v26.09.3-CE-ubuntu24.04-r3.rebuild.json.sigstore
-python3 docs/rebuild-bundle/rebuild_bundle.py validate . --key ../cosign.pub --signature ../ReadyStack-bookstack-v26.09.3-CE-ubuntu24.04-r3.rebuild.json.sigstore
+curl -fsSLo ../ReadyStack-bookstack-v26.09.3-CE-ubuntu24.04-r4.rebuild.json.sigstore https://readystack.dev/api/kit/bookstack/v26.09.3-CE-ubuntu24.04-r4/files/ReadyStack-bookstack-v26.09.3-CE-ubuntu24.04-r4.rebuild.json.sigstore
+python3 docs/rebuild-bundle/rebuild_bundle.py validate . --key ../cosign.pub --signature ../ReadyStack-bookstack-v26.09.3-CE-ubuntu24.04-r4.rebuild.json.sigstore
 ```
 
 `validate` needs Python 3 and cosign. Without building anything it checks the signature over `rebuild.json`, every file's checksum, the tree hash over every file's path, mode and content, each base image layout's digest and the builder archive. `verify`, with the same arguments, also rebuilds with the builder's network egress blocked and exits 0 only when the rebuilt digest is the published one (docs/REBUILD.md).
